@@ -10,14 +10,35 @@
 
 
 	<h:head>
-		<link rel="stylesheet" type="text/css" href="../global.css" />
-		<link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="stylesheet" type="text/css" href="pages/global.css" />
+		<link rel="stylesheet" type="text/css" href="pages/index/index.css" />
 		<title> Login </title>
 	</h:head>
 	
 	<h:body>
-		<h1>Faça Login</h1>
-		<h:button value="Go" outcome="pages/listing/icident_log.xhtml" />
+		<h:form>
+			<div class="login">
+				<div class="center">
+					<h1>Login</h1>
+					<h:outputLabel for="login" value="Usuario:" />
+			        <h:inputText id="login" value="oi" class="input-login" />
+			
+			        <h:outputLabel for="senha" value="Senha:" />
+			        <h:inputSecret id="senha" value="oi" class="input-senha"/>
+			
+			        <h:commandButton value="Entrar" type="submit"/>
+			
+					<div class="registro">
+						<span class="conta">Não tem uma conta ?  </span>
+						<p:link value="Cadastre-se" id="link" styleClass="cadastro"> </p:link>
+					</div>
+					
+			        <h:message for="login" />
+			        <h:message for="senha" />
+			        <h:messages globalOnly="true" />
+		        </div>
+			</div>
+		</h:form>
 	</h:body>
 	
 </html>
