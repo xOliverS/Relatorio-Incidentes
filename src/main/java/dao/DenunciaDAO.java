@@ -7,10 +7,10 @@ import util.JPAUTIL;
 
 public class DenunciaDAO {
 	
-	public static void salvar(Denuncia d) {
+	public static void salvar(Denuncia denuncia) {
 		EntityManager em = JPAUTIL.criarEntity();
 		em.getTransaction().begin();
-		em.persist(d);
+		em.persist(denuncia);
 		em.getTransaction().commit();
 	}
 

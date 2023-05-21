@@ -4,22 +4,29 @@ import javax.faces.bean.ManagedBean;
 
 import dao.DenunciaDAO;
 import entities.Denuncia;
+import static util.MessageUTIL.*;
 
 @ManagedBean
 public class DenunciaBEAN {
 	
-	private Denuncia d = new Denuncia();
+	private Denuncia denuncia = new Denuncia();
 	
 	public void Salvar() {
-		DenunciaDAO.salvar(d);
+		
+		try {
+			DenunciaDAO.salvar(denuncia);
+			sucesso("Sucesso", "Email Salvo com sucesso");
+		} catch (Exception e) {
+			erro("Erro", "Erro ao salvar" + e);
+		}
 	}
 
 	public Denuncia getD() {
-		return d;
+		return denuncia;
 	}
 
-	public void setD(Denuncia d) {
-		this.d = d;
+	public void setD(Denuncia denuncia) {
+		this.denuncia = denuncia;
 	}
 
 }

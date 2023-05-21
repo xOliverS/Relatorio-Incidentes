@@ -44,7 +44,7 @@ public class Denuncia {
 	@Column(name = "Orientacao_Agressor")
 	private String orientSexAgressor;
 	@Column(name = "Escolaridade_Agressor")
-	private String escolaridade;
+	private Integer escolaridade;
 	
 	@Column(name = "Incidente_Relatado")
 	private String relatoIncidente;
@@ -63,10 +63,10 @@ public class Denuncia {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getEscolaridade() {
+	public Integer getEscolaridade() {
 		return escolaridade;
 	}
-	public void setEscolaridade(String escolaridade) {
+	public void setEscolaridade(Integer escolaridade) {
 		this.escolaridade = escolaridade;
 	}
 	public Date getData() {
