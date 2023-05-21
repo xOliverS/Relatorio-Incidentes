@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,7 +34,7 @@ public class Denuncia {
 	private String sexoAgressor;
 	@Column(name = "Idade_Agressor")
 	private Integer idadeAgressor;
-	@Column(name = "Escolaridade_Agressor")
+	@Column(name = "Grau_Parentesco_Agressor")
 	private String grauParentesco;
 	@Column(name = "Ocupacao_Agressor")
 	private String ocupacao;
@@ -76,6 +77,10 @@ public class Denuncia {
 		this.data = data;
 	}
 	
+  @PrePersist
+    protected void onCreate() {
+        data = new Date();
+    }
 	
 	public String getSexo() {
 		return sexo;

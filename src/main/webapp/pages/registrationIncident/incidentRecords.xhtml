@@ -40,6 +40,9 @@
 	           					<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
 	           					<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
 	        				</p:selectOneRadio>
+	        				
+	        				<p:outputLabel value="Idade"/>
+							<p:inputNumber decimalPlaces="0" value="#{denunciaBEAN.d.idade}"/>
 
 	        				<p:outputLabel value="Serie / Turno"/>
 	        				<p:inputText value="#{denunciaBEAN.d.serieTurno}"/>
@@ -60,7 +63,7 @@
 	        				</p:selectOneRadio>
 	
 	        				<p:outputLabel value="Idade"/>
-							<p:inputNumber value="#{denunciaBEAN.d.idadeAgressor}"/>
+							<p:inputNumber decimalPlaces="0" value="#{denunciaBEAN.d.idadeAgressor}"/>
 
 
 							<p:outputLabel value="Grau Parentesco / relacionamento com a vitima"/>
@@ -70,7 +73,7 @@
 							<p:inputText value="#{denunciaBEAN.d.ocupacao}"/>
 						
 							<p:outputLabel value="Raça / Cor"/>
-							<p:selectOneRadio id="racaCor" value="#{denunciaBEAN.d.sexoAgressor}">
+							<p:selectOneRadio id="racaCor" value="#{denunciaBEAN.d.racaCorAgressor}">
 	           					<f:selectItem itemLabel="Branca" itemValue="Branca" />
 	           					<f:selectItem itemLabel="Preta" itemValue="Preta"/>
 	           					<f:selectItem itemLabel="Parda" itemValue="Parda"/>
@@ -87,7 +90,7 @@
 	        				</p:selectOneRadio>
 	        			
 	        				<p:outputLabel value="Orienração Sexual"/>
-							<p:selectOneRadio id="orientecao" value="#{denunciaBEAN.d.identGeneroAgressor}">
+							<p:selectOneRadio id="orientecao" value="#{denunciaBEAN.d.orientSexAgressor}">
 	           					<f:selectItem itemLabel="Heterossexual" itemValue="Heterossexual"/>
 	           					<f:selectItem itemLabel="Homossexual" itemValue="Homossexual"/>
 	           					<f:selectItem itemLabel="Bissexual" itemValue="Bissexual"/>
@@ -97,8 +100,8 @@
 	           					<p:ajax update="outroInput"/>
 	        				</p:selectOneRadio>
 	        				<h:panelGroup id="outroInput">
-	        					<h:outputLabel for="Outro" value="Outro:" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
-	        					<p:inputText id="Outro" value="#{denunciaBEAN.d.identGeneroAgressor}" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
+	        					<h:outputLabel for="Outro" value="Outro:" rendered="#{denunciaBEAN.d.orientSexAgressor eq 'Outro'}"/>
+	        					<p:inputText id="Outro" value="#{denunciaBEAN.d.orientSexAgressor}" rendered="#{denunciaBEAN.d.orientSexAgressor eq 'Outro'}"/>
 	        				</h:panelGroup>
 	        			
 	        				<p:outputLabel value="Escolaridade \n Ensino Fundamental"/>
@@ -133,7 +136,7 @@
 	        				<p:outputLabel value="Que providências foram tomadas?"/>
 							<p:inputText value="#{denunciaBEAN.d.providencias}"/>
 						
-							<p:commandButton value="Registrar" update="form"/>
+							<p:commandButton action="#{denunciaBEAN.salvar}" value="Registrar" update="form"/>
 				</div>
 			</h:form>
 
