@@ -19,22 +19,23 @@
 			<p:messages id="messages" showDetail="true" closable="true">
 		    	<p:autoUpdate />
 		    </p:messages>
-			<div class="login">	
-				
-				<p:outputLabel value="Nome de Usuário"/>
-				<p:inputText value="#{usuarioBEAN.usuario.nome}" required="true"/>
-				
-				<p:outputLabel value="login"/>
-				<p:inputText value="#{usuarioBEAN.usuario.login}" required="true"/>
-				
-				<p:outputLabel value="Senha"/>
-				<p:password id="pwd1" value="#{usuarioBEAN.usuario.senha}" match="pwd2" label="Password 1" required="true"/>
-				<p:outputLabel value="Confirme a senha"/>
-				<p:password id="pwd2" value="#{usuarioBEAN.usuario.senha}" label="Password 2" required="true"/>
-				
-				
-				<p:commandButton value="Cadastrar" action="#{usuarioBEAB.salvar}" update="form"/>
-				<p:link outcome="login" value="Efetuar Login" id="link"> </p:link>
+			<div class="user-registration">	
+				<div class="center">
+					<p:outputLabel value="Nome de Usuário"/>
+					<p:inputText value="#{usuarioBEAN.usuario.nome}" required="true" class="inputs"/>
+					
+					<p:outputLabel value="login"/>
+					<p:inputText value="#{usuarioBEAN.usuario.login}" required="true" class="inputs"/>
+					
+					<p:outputLabel value="Senha"/>
+					<p:password id="pwd1" value="#{usuarioBEAN.usuario.senha}" match="pwd2" label="Password 1" required="true" class="inputs"/>
+					<p:outputLabel value="Confirme a senha"/>
+					<p:password id="pwd2" value="#{usuarioBEAN.usuario.senha}" label="Password 2" required="true" class="inputs"/>
+					
+					
+					<p:commandButton value="Cadastrar" action="#{usuarioBEAN.salvar}" update="form"/>
+					<p:link outcome="index" value="Efetuar Login" id="link"> </p:link>
+				</div>
 			</div>
 		</h:form>
 	</h:body>

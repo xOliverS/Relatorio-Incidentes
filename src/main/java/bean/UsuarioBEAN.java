@@ -16,7 +16,7 @@ public class UsuarioBEAN {
 		
 		try {
 			UsuarioDAO.salvar(usuario);
-			sucesso("Sucesso", "Email Salvo com sucesso");
+			sucesso("Sucesso", "Usuário salvo com sucesso");
 			usuario = new Usuario();
 		} catch (Exception e) {
 			erro("Erro", "Erro ao salvar" + e);

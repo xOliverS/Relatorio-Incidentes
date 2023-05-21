@@ -1,1 +1,37 @@
 @charset "ISO-8859-1";
+
+
+.center{
+	width: 800x;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	font-size: 25px;
+	margin: 3px;
+	max-width: 800px;
+	
+  	padding: 18px 6% 60px 6%;
+ 	margin: 0 0 35px 0;
+ 	background: #f7f7f7;
+ 	border: 1px solid rgba(147, 184, 189,0.8);
+   
+  	-webkit-box-shadow: 5px;
+  	border-radius: 5px;
+   
+  	-webkit-animation-duration: 0.5s;
+  	-webkit-animation-timing-function: ease;
+  	-webkit-animation-fill-mode: both;
+ 
+  	animation-duration: 0.5s;
+  	animation-timing-function: ease;
+  	animation-fill-mode: both;
+}
+
+.inputs{
+	font-size: 25px;
+	padding: 8px;
+	margin-bottom: 2rem;
+}
+
+
+
