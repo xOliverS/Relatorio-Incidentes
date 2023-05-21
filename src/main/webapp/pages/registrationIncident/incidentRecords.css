@@ -1,1 +1,23 @@
 @charset "ISO-8859-1";
+
+body{
+
+	
+}
+
+#form{
+	background: white;
+	padding: 3rem;
+}
+
+.vitima{
+	margin-top: 4rem;
+}
+
+.vitima > * + *, .agressor > * + * {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+

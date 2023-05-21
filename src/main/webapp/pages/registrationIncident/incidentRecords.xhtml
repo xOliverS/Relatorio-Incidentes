@@ -15,113 +15,128 @@
 	</h:head>
 	
 	<h:body>
-		<div class="container">
+		<div class="menu">
+		    <p:tabMenu activeIndex="#{param.i}">
+		        <p:menuitem value="Incidentes" outcome="/pages/listing/icident_log.xhtml" icon="pi pi-fw pi-calendar">
+		            <f:param name="i" value="0"/>
+		        </p:menuitem>
+		        <p:menuitem value="Registro de Incidente" outcome="incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
+		            <f:param name="i" value="1"/>
+		        </p:menuitem>
+		        <p:menuitem value="Registro de Usuario" outcome="incidentRecords.xhtml" icon="pi pi-fw pi-user-plus">
+		            <f:param name="i" value="2"/>
+		        </p:menuitem>
+		    </p:tabMenu>
+		</div>
 			<h:form id="form">
+			
 				<div class="vitima">
 					<h1>Vitima</h1>
-						<p:outputLabel value="Nome Identificado (Iniciais)"/>
-						<p:inputText value="#{denunciaBEAN.d.nome}"/>
-						
-						<p:outputLabel value="Sexo"/>
-						<p:selectOneRadio id="sexo" value="#{denunciaBEAN.d.sexo}">
-           					<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
-           					<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Serie / Turno"/>
-        				<p:inputText value="#{denunciaBEAN.d.serieTurno}"/>
-        				
-        				<p:outputLabel value="Endereço"/>
-						<p:inputText value="#{denunciaBEAN.d.endereco}"/>		
+							<p:outputLabel value="Nome Identificado (Iniciais)"/>
+							<p:inputText value="#{denunciaBEAN.d.nome}"/>
+
+							<p:outputLabel value="Sexo" styleClass="custom-element"/>
+							<p:selectOneRadio id="sexo" value="#{denunciaBEAN.d.sexo}">
+	           					<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+	           					<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+	        				</p:selectOneRadio>
+
+	        				<p:outputLabel value="Serie / Turno"/>
+	        				<p:inputText value="#{denunciaBEAN.d.serieTurno}"/>
+
+	        				<p:outputLabel value="Endereço"/>
+							<p:inputText value="#{denunciaBEAN.d.endereco}"/>	
+
 				</div>
 				<div class="agressor">
 					<h1>Suposto Agressor</h1>
-						<p:outputLabel value="Nome Identificado"/>
-						<p:inputText value="#{denunciaBEAN.d.nomeAgressor}"/>
+							<p:outputLabel value="Nome Identificado"/>
+							<p:inputText value="#{denunciaBEAN.d.nomeAgressor}"/>
+
+							<p:outputLabel value="Sexo"/>
+							<p:selectOneRadio id="sexpAgressor" value="#{denunciaBEAN.d.sexoAgressor}">
+	           					<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+	           					<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+	        				</p:selectOneRadio>
+	
+	        				<p:outputLabel value="Idade"/>
+							<p:inputNumber value="#{denunciaBEAN.d.idadeAgressor}"/>
+
+
+							<p:outputLabel value="Grau Parentesco / relacionamento com a vitima"/>
+							<p:inputText value="#{denunciaBEAN.d.grauParentesco}" styleClass="custom-element"/>
+
+							<p:outputLabel value="Ocupação (Profissão)"/>
+							<p:inputText value="#{denunciaBEAN.d.ocupacao}"/>
 						
-						<p:outputLabel value="Sexo"/>
-						<p:selectOneRadio id="sexpAgressor" value="#{denunciaBEAN.d.sexoAgressor}">
-           					<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
-           					<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Idade"/>
-						<p:inputNumber value="#{denunciaBEAN.d.idadeAgressor}"/>
+							<p:outputLabel value="Raça / Cor"/>
+							<p:selectOneRadio id="racaCor" value="#{denunciaBEAN.d.sexoAgressor}">
+	           					<f:selectItem itemLabel="Branca" itemValue="Branca" />
+	           					<f:selectItem itemLabel="Preta" itemValue="Preta"/>
+	           					<f:selectItem itemLabel="Parda" itemValue="Parda"/>
+	           					<f:selectItem itemLabel="Indígena" itemValue="Indigena"/>
+	           					<f:selectItem itemLabel="Amarela" itemValue="Amarela"/>
+	        				</p:selectOneRadio>
+	        			
+	        				<p:outputLabel value="Identidade de gênero"/>
+							<p:selectOneRadio id="identGenero" value="#{denunciaBEAN.d.identGeneroAgressor}">
+	           					<f:selectItem itemLabel="Masculino Cissexual" itemValue="MasculinoCissexual"/>
+	           					<f:selectItem itemLabel="Feminino Cissexual" itemValue="FemininoCissexual"/>
+	           					<f:selectItem itemLabel="Masculino Transexual" itemValue="MasculinoTransexual"/>
+	           					<f:selectItem itemLabel="Feminino Transexual" itemValue="FemininoTransexual"/>
+	        				</p:selectOneRadio>
+	        			
+	        				<p:outputLabel value="Orienração Sexual"/>
+							<p:selectOneRadio id="orientecao" value="#{denunciaBEAN.d.identGeneroAgressor}">
+	           					<f:selectItem itemLabel="Heterossexual" itemValue="Heterossexual"/>
+	           					<f:selectItem itemLabel="Homossexual" itemValue="Homossexual"/>
+	           					<f:selectItem itemLabel="Bissexual" itemValue="Bissexual"/>
+	           					<f:selectItem itemLabel="Panssexual" itemValue="Panssexual"/>
+	           					<f:selectItem itemLabel="Não Binário" itemValue="NaoBinario"/>
+	           					<f:selectItem itemLabel="Outro" itemValue="Outro"/>
+	           					<p:ajax update="outroInput"/>
+	        				</p:selectOneRadio>
+	        				<h:panelGroup id="outroInput">
+	        					<h:outputLabel for="Outro" value="Outro:" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
+	        					<p:inputText id="Outro" value="#{denunciaBEAN.d.identGeneroAgressor}" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
+	        				</h:panelGroup>
+	        			
+	        				<p:outputLabel value="Escolaridade \n Ensino Fundamental"/>
+							<p:selectOneRadio id="escolaridade" value="#{denunciaBEAN.d.escolaridade}">
+	           					<f:selectItem itemLabel="1ª" itemValue="1"/>
+	           					<f:selectItem itemLabel="2ª" itemValue="2"/>
+	           					<f:selectItem itemLabel="3ª" itemValue="3"/>
+	           					<f:selectItem itemLabel="4ª" itemValue="4"/>
+	           					<f:selectItem itemLabel="5ª" itemValue="5"/>
+	           					<f:selectItem itemLabel="6ª" itemValue="6"/>
+	           					<f:selectItem itemLabel="7ª" itemValue="7"/>
+	           					<f:selectItem itemLabel="8ª" itemValue="8"/>
+	           					<f:selectItem itemLabel="9ª" itemValue="9"/>
+	        				</p:selectOneRadio>
+	        				
+	        				<p:outputLabel value="Relato do Incidente"/>
+							<p:inputText value="#{denunciaBEAN.d.relatoIncidente}"/>
 						
-						<p:outputLabel value="Grau Parentesco / relacionamento com a vitima"/>
-						<p:inputText value="#{denunciaBEAN.d.grauParentesco}"/>
+							<p:outputLabel value="Que tipo de violação de direito:"/>
+							<p:selectOneRadio id="violacao" value="#{denunciaBEAN.d.violacaoDireito}">
+	           					<f:selectItem itemLabel="Violência física" itemValue="ViolenciaFisica"/>
+	           					<f:selectItem itemLabel="Negligência" itemValue="Negligencia"/>
+	           					<f:selectItem itemLabel="Violência sexual" itemValue="ViolenciaSexual"/>
+	           					<f:selectItem itemLabel="Violência psicológica" itemValue="ViolenciaPsicologica"/>
+	           					<f:selectItem itemLabel="Automutilação" itemValue="Automutilacao"/>
+	           					<f:selectItem itemLabel="Suicídio" itemValue="Suicidio"/>
+	           					<f:selectItem itemLabel="Gravidez menor de 14 anos" itemValue="GravidezMenor14"/>
+	           					<f:selectItem itemLabel="Trabalho Infantil" itemValue="TrabalhoInfantil"/>
+	           					<f:selectItem itemLabel="Bullying" itemValue="Bullying"/>
+	        				</p:selectOneRadio>
+	        			
+	        				<p:outputLabel value="Que providências foram tomadas?"/>
+							<p:inputText value="#{denunciaBEAN.d.providencias}"/>
 						
-						<p:outputLabel value="Ocupação (Profissão)"/>
-						<p:inputText value="#{denunciaBEAN.d.ocupacao}"/>
-						
-						<p:outputLabel value="Raça / Cor"/>
-						<p:selectOneRadio id="racaCor" value="#{denunciaBEAN.d.sexoAgressor}">
-           					<f:selectItem itemLabel="Branca" itemValue="Branca"/>
-           					<f:selectItem itemLabel="Preta" itemValue="Preta"/>
-           					<f:selectItem itemLabel="Parda" itemValue="Parda"/>
-           					<f:selectItem itemLabel="Indígena" itemValue="Indigena"/>
-           					<f:selectItem itemLabel="Amarela" itemValue="Amarela"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Identidade de gênero"/>
-						<p:selectOneRadio id="identGenero" value="#{denunciaBEAN.d.identGeneroAgressor}">
-           					<f:selectItem itemLabel="Masculino Cissexual" itemValue="MasculinoCissexual"/>
-           					<f:selectItem itemLabel="Feminino Cissexual" itemValue="FemininoCissexual"/>
-           					<f:selectItem itemLabel="Masculino Transexual" itemValue="MasculinoTransexual"/>
-           					<f:selectItem itemLabel="Feminino Transexual" itemValue="FemininoTransexual"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Orienração Sexual"/>
-						<p:selectOneRadio id="orientecao" value="#{denunciaBEAN.d.identGeneroAgressor}">
-           					<f:selectItem itemLabel="Heterossexual" itemValue="Heterossexual"/>
-           					<f:selectItem itemLabel="Homossexual" itemValue="Homossexual"/>
-           					<f:selectItem itemLabel="Bissexual" itemValue="Bissexual"/>
-           					<f:selectItem itemLabel="Panssexual" itemValue="Panssexual"/>
-           					<f:selectItem itemLabel="Não Binário" itemValue="NaoBinario"/>
-           					<f:selectItem itemLabel="Outro" itemValue="Outro"/>
-           					<p:ajax update="outroInput"/>
-        				</p:selectOneRadio>
-        				<h:panelGroup id="outroInput">
-        					<h:outputLabel for="Outro" value="Outro:" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
-        					<p:inputText id="Outro" value="#{denunciaBEAN.d.identGeneroAgressor}" rendered="#{denunciaBEAN.d.identGeneroAgressor eq 'Outro'}"/>
-        				</h:panelGroup>
-        				
-        				<p:outputLabel value="Escolaridade \n Ensino Fundamental"/>
-						<p:selectOneRadio id="escolaridade" value="#{denunciaBEAN.d.escolaridade}">
-           					<f:selectItem itemLabel="1ª" itemValue="1"/>
-           					<f:selectItem itemLabel="2ª" itemValue="2"/>
-           					<f:selectItem itemLabel="3ª" itemValue="3"/>
-           					<f:selectItem itemLabel="4ª" itemValue="4"/>
-           					<f:selectItem itemLabel="5ª" itemValue="5"/>
-           					<f:selectItem itemLabel="6ª" itemValue="6"/>
-           					<f:selectItem itemLabel="7ª" itemValue="7"/>
-           					<f:selectItem itemLabel="8ª" itemValue="8"/>
-           					<f:selectItem itemLabel="9ª" itemValue="9"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Relato do Incidente"/>
-						<p:inputText value="#{denunciaBEAN.d.relatoIncidente}"/>
-						
-						<p:outputLabel value="Que tipo de violação de direito:"/>
-						<p:selectOneRadio id="violacao" value="#{denunciaBEAN.d.violacaoDireito}">
-           					<f:selectItem itemLabel="Violência física" itemValue="ViolenciaFisica"/>
-           					<f:selectItem itemLabel="Negligência" itemValue="Negligencia"/>
-           					<f:selectItem itemLabel="Violência sexual" itemValue="ViolenciaSexual"/>
-           					<f:selectItem itemLabel="Violência psicológica" itemValue="ViolenciaPsicologica"/>
-           					<f:selectItem itemLabel="Automutilação" itemValue="Automutilacao"/>
-           					<f:selectItem itemLabel="Suicídio" itemValue="Suicidio"/>
-           					<f:selectItem itemLabel="Gravidez menor de 14 anos" itemValue="GravidezMenor14"/>
-           					<f:selectItem itemLabel="Trabalho Infantil" itemValue="TrabalhoInfantil"/>
-           					<f:selectItem itemLabel="Bullying" itemValue="Bullying"/>
-        				</p:selectOneRadio>
-        				
-        				<p:outputLabel value="Que providências foram tomadas?"/>
-						<p:inputText value="#{denunciaBEAN.d.providencias}"/>
-						
-						<p:commandButton value="Registrar" update="form"/>
+							<p:commandButton value="Registrar" update="form"/>
 				</div>
 			</h:form>
-		</div>
+
 	</h:body>
 	
 </html>
