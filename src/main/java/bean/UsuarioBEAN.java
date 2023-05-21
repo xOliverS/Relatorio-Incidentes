@@ -10,6 +10,8 @@ import static util.MessageUTIL.*;
 @ManagedBean
 public class UsuarioBEAN {
 	
+	private String login;
+	private String senha;
 	private Usuario usuario = new Usuario();
 	
 	public String salvar() {
@@ -22,6 +24,33 @@ public class UsuarioBEAN {
 			erro("Erro", "Erro ao salvar" + e);
 		}
 		return null;
+	}
+	
+	public String userAutentication() {
+		usuario = UsuarioDAO.findUser(login, senha);
+		
+		if(usuario != null) {
+			return "/pages/listing/icident_log.xhtml?faces-redirect=true";
+		}else {
+			System.out.println("Usuário não existe");
+		}
+		return null;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public Usuario getUsuario() {

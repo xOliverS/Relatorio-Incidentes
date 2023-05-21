@@ -21,18 +21,18 @@
 				<div class="center">
 					<h1>Login</h1>
 					<h:outputLabel for="login" value="Usuario:" />
-			        <h:inputText id="login" class="input-login" />
+			        <h:inputText id="login" class="input-login" value="#{usuarioBEAN.login}" />
 			
 			        <h:outputLabel for="senha" value="Senha:" />
-			        <h:inputSecret id="senha" class="input-senha"/>
+			        <h:inputSecret id="senha" class="input-senha" value="#{usuarioBEAN.senha}"/>
 			
-			        <h:commandButton value="Entrar" type="submit"/>
+			        <h:commandButton value="Entrar" action="#{usuarioBEAN.userAutentication}"/>
 			
 					<div class="registro">
 						<span class="conta">Não tem uma conta ?  </span>
 						<p:link outcome="/pages/userRegistration/userRegistration" value="Cadastre-se" id="link" styleClass="cadastro"> </p:link>
 					</div>
-					
+
 		        </div>
 			</div>
 		</h:form>
