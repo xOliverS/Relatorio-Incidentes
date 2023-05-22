@@ -23,9 +23,6 @@
 		        <p:menuitem value="Registro de Incidente" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
 		            <f:param name="i" value="1"/>
 		        </p:menuitem>
-		        <p:menuitem value="Cadastro de Usuario" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-user-plus">
-		            <f:param name="i" value="2"/>
-		        </p:menuitem>
 		    </p:tabMenu>
 		</div>
 		<h:form>
@@ -42,8 +39,30 @@
 					<p:column headerText="Nome Suposto Agressor"><p:outputLabel value="#{d.nomeAgressor}" /></p:column>
 					<p:column headerText="SexoAgressor"><p:outputLabel value="#{d.sexoAgressor}" /></p:column>
 					<p:column headerText="Idade Agressor"><p:outputLabel value="#{d.idadeAgressor}"/></p:column>
+					<p:column headerText="Deletar">
+			        	<p:commandButton icon="pi pi-trash" action="#{denunciaBEAN.deletar}" ajax="false">
+			            	<f:setPropertyActionListener value="#{d}" target="#{denunciaBEAN.d}" />
+			        	</p:commandButton>
+            		</p:column>
+            		<p:column headerText="Visualizar">
+            			<p:commandButton icon="pi pi-external-link" onclick="PF('dlg2').show()"/>
+						<p:dialog header="Dados" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade">
+							
+		    				<p:outputLabel value="Agressor: "/>
+		    				<p:outputLabel value="#{d.nomeAgressor}"/>
+		    				<p/>
+		    				<p:outputLabel value="Sexo "/>
+		    				<p:outputLabel value="#{d.sexo}" />
+		    				<p/>
+		    				<p:outputLabel value="Idade "/>
+		    				<p:outputLabel value="#{d.idade}" />
+						</p:dialog>
+						</p:column>
 
 			</p:dataTable>
+			<p:dialog header="Contagem" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade">
+	    		<p:outputLabel value="#{emailBean.contador}"/>
+			</p:dialog>
 		</h:form>
 	</h:body>
 </html>

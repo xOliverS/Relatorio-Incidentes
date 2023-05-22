@@ -48,5 +48,11 @@ public class DenunciaBEAN {
 	public void setLista(List<Denuncia> lista) {
 		this.lista = lista;
 	}
+	
+	public String deletar() {
+		DenunciaDAO.deletar(denuncia);
+		lista = DenunciaDAO.listarTodos();
+		return null;
+	}
 
 }
