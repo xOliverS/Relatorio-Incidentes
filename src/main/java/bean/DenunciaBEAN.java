@@ -6,10 +6,13 @@ import dao.DenunciaDAO;
 import entities.Denuncia;
 import static util.MessageUTIL.*;
 
+import java.util.List;
+
 @ManagedBean
 public class DenunciaBEAN {
 	
 	private Denuncia denuncia = new Denuncia();
+	private List<Denuncia> lista;
 	
 	public String salvar() {
 		
@@ -22,6 +25,8 @@ public class DenunciaBEAN {
 		}
 		return null;
 	}
+	
+	
 
 	public Denuncia getD() {
 		return denuncia;
@@ -29,6 +34,19 @@ public class DenunciaBEAN {
 
 	public void setD(Denuncia denuncia) {
 		this.denuncia = denuncia;
+	}
+
+
+
+	public List<Denuncia> getLista() {
+		if(lista == null) {
+			lista = DenunciaDAO.listarTodos();
+		}
+		return lista;
+	}
+
+	public void setLista(List<Denuncia> lista) {
+		this.lista = lista;
 	}
 
 }

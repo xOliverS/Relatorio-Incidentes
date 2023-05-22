@@ -15,9 +15,35 @@
 	</h:head>
 	
 	<h:body>
-		<div class="container">
-			
+		<div class="menu">
+		    <p:tabMenu activeIndex="#{param.i}">
+		        <p:menuitem value="Incidentes" outcome="/pages/listing/icident_log.xhtml" icon="pi pi-fw pi-calendar">
+		            <f:param name="i" value="0"/>
+		        </p:menuitem>
+		        <p:menuitem value="Registro de Incidente" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
+		            <f:param name="i" value="1"/>
+		        </p:menuitem>
+		        <p:menuitem value="Cadastro de Usuario" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-user-plus">
+		            <f:param name="i" value="2"/>
+		        </p:menuitem>
+		    </p:tabMenu>
 		</div>
+		<h:form>
+			<p:dataTable value="#{denunciaBEAN.lista}" var="d" rowKey="#{d.id}"> 
+				<f:facet name="header">
+					<h2>Incidentes Retados</h2>
+				</f:facet>
+					<p:column headerText="Nome da Vítima"><p:outputLabel value="#{d.nome}" /></p:column>
+					<p:column headerText="Sexo"><p:outputLabel value="#{d.sexo}" /></p:column>
+					<p:column headerText="Idade"><p:outputLabel value="#{d.idade}" /></p:column>
+					<p:column headerText="Serie/Turno"><p:outputLabel value="#{d.serieTurno}" /></p:column>
+					<p:column headerText="Endereço"><p:outputLabel value="#{d.endereco}" /></p:column>
+					
+					<p:column headerText="Nome Suposto Agressor"><p:outputLabel value="#{d.nomeAgressor}" /></p:column>
+					<p:column headerText="SexoAgressor"><p:outputLabel value="#{d.sexoAgressor}" /></p:column>
+					<p:column headerText="Idade Agressor"><p:outputLabel value="#{d.idadeAgressor}"/></p:column>
+
+			</p:dataTable>
+		</h:form>
 	</h:body>
-	
 </html>
