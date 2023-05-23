@@ -1,18 +1,25 @@
 package bean;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+import dao.DenunciaDAO;
 import dao.UsuarioDAO;
 import entities.Usuario;
 
 import static util.MessageUTIL.*;
 
+import java.util.List;
+
 @ManagedBean
+@SessionScoped
 public class UsuarioBEAN {
 	
 	private String login;
 	private String senha;
 	private Usuario usuario = new Usuario();
+	private boolean logado;
+	private List<Usuario> lista;
 	
 	public String salvar() {
 		
@@ -26,20 +33,28 @@ public class UsuarioBEAN {
 		return null;
 	}
 	
+	public String deletar() {
+		UsuarioDAO.deletar(usuario);
+		lista = UsuarioDAO.listarTodos();
+		return null;
+	}
+	
 	public String userAutentication() {
 		usuario = UsuarioDAO.findUser(login, senha);
 		
 		if(usuario != null) {
+			logado = true;
 			return "/pages/listing/icident_log.xhtml?faces-redirect=true";
 		}else {
-			System.out.println("Usuário não existe");
+			erro("Erro", "Usuário não registrado !");
 		}
 		return null;
 	}
 	
+	
 	public String logout() {
-		System.out.println("oi");
-		return "../index.xhtml?faces-redirect=true";
+		logado = false;
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public String getLogin() {
@@ -64,6 +79,25 @@ public class UsuarioBEAN {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
+	}
+
+	public List<Usuario> getLista() {
+		if(lista == null) {
+			lista = UsuarioDAO.listarTodos();
+		}
+		return lista;
+	}
+
+	public void setLista(List<Usuario> lista) {
+		this.lista = lista;
 	}
 
 }

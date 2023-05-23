@@ -19,6 +19,28 @@
 			<p:messages id="messages" showDetail="true" closable="true">
 		    	<p:autoUpdate />
 		    </p:messages>
+		    <c:if test="#{usuarioBEAN.logado}">
+		    	<div class="menu">
+		   			 <p:tabMenu activeIndex="#{param.i}">
+		        	 	<p:menuitem value="Incidentes" outcome="/pages/listing/icident_log.xhtml" icon="pi pi-fw pi-calendar">
+		            		<f:param name="i" value="0"/>
+		        		</p:menuitem>
+		        		<p:menuitem value="Registro de Incidente" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
+		            		<f:param name="i" value="1"/>
+		        		</p:menuitem>
+		        		<p:menuitem value="Cadastro de Usuario" outcome="/pages/userRegistration/userRegistration.xhtml" icon="pi pi-fw pi-user-plus">
+		            		<f:param name="i" value="2"/>
+		        		</p:menuitem>
+		        		<p:menuitem value="Listagem de Usuario" outcome="/pages/listing/userList.xhtml" icon="pi pi-fw pi-user-plus">
+		            		<f:param name="i" value="3"/>
+		        		</p:menuitem>
+		    		</p:tabMenu>
+		    		<div class="logout">
+						<h:outputText value="Bem Vindo(a) #{usuarioBEAN.usuario.nome} ! " />
+						<p:commandButton value=" Sair" action="#{usuarioBEAN.logout}" />
+					</div>
+				</div>
+		    </c:if>
 			<div class="user-registration">	
 				<div class="center">
 					<p:outputLabel value="Nome de Usuário"/>
@@ -31,7 +53,6 @@
 					<p:password id="pwd1" value="#{usuarioBEAN.usuario.senha}" match="pwd2" label="Password 1" required="true" class="inputs"/>
 					<p:outputLabel value="Confirme a senha"/>
 					<p:password id="pwd2" value="#{usuarioBEAN.usuario.senha}" label="Password 2" required="true" class="inputs"/>
-					
 					
 					<p:commandButton value="Cadastrar" action="#{usuarioBEAN.salvar}" update="form"/>
 					<p:link outcome="index" value="Efetuar Login" id="link"/>

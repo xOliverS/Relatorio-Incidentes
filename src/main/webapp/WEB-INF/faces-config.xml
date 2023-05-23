@@ -19,5 +19,9 @@
 	        <from-outcome>incidentRecords</from-outcome>
 	        <to-view-id>/pages/registrationIncident/incidentRecords.xhtml</to-view-id>
     	</navigation-case>
+    	<navigation-case>
+	        <from-outcome>userList</from-outcome>
+	        <to-view-id>/pages/listing/userList.xhtml</to-view-id>
+    	</navigation-case>
   	</navigation-rule>
 </faces-config>

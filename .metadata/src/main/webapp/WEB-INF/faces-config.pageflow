@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16846998119090" configfile="/relatorio-incidente/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf16847000289984" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf16847000289985 pf16847126844710 pf16847127503504" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf16847000289984" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf16847000289985 pf16847126844710 pf16847127503504 pf16848060521532" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="pages/userRegistration/userRegistration" x="338" y="178" id="pf16847000289986" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf16847000289985" path="/pages/userRegistration/userRegistration"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="562" id="pf16847126844712" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf16847126844710" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="pages/registrationIncident/incidentRecords.xhtml" id="pf16847127503505" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf16847127503504" path="/pages/registrationIncident/incidentRecords.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="562" id="pf16847126844712" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf16847126844710" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/registrationIncident/incidentRecords.xhtml" id="pf16847127503505" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf16847127503504" path="/pages/registrationIncident/incidentRecords.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/listing/userList.xhtml" id="pf16848060521533" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf16848060521532" path="/pages/listing/userList.xhtml"/>
   <links id="pf16847000289985" target="pf16847000289986" source="pf16847000289984" outcome="login"/>
   <links id="pf16847126844710" target="pf16847126844712" source="pf16847000289984" outcome="index"/>
   <links id="pf16847127503504" target="pf16847127503505" source="pf16847000289984" outcome="incidentRecords"/>
+  <links id="pf16848060521532" target="pf16848060521533" source="pf16847000289984" outcome="userList"/>
 </pageflow:Pageflow>

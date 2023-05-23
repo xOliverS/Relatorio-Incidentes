@@ -12,3 +12,10 @@ body{
 	background: #eee;
 	padding: 3rem;
 }
+
+.logout{
+	position: relative;
+	margin-right: 15px;
+	top: -45px;
+	float: right;
+}

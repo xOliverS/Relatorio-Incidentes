@@ -26,7 +26,11 @@ public class DenunciaBEAN {
 		return null;
 	}
 	
-	
+	public String deletar() {
+		DenunciaDAO.deletar(denuncia);
+		lista = DenunciaDAO.listarTodos();
+		return null;
+	}
 
 	public Denuncia getD() {
 		return denuncia;
@@ -49,10 +53,6 @@ public class DenunciaBEAN {
 		this.lista = lista;
 	}
 	
-	public String deletar() {
-		DenunciaDAO.deletar(denuncia);
-		lista = DenunciaDAO.listarTodos();
-		return null;
-	}
+	
 
 }

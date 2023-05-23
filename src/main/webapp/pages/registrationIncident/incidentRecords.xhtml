@@ -26,7 +26,14 @@
 		        <p:menuitem value="Cadastro de Usuario" outcome="/pages/userRegistration/userRegistration.xhtml" icon="pi pi-fw pi-user-plus">
 		            <f:param name="i" value="2"/>
 		        </p:menuitem>
+		        <p:menuitem value="Listagem de Usuario" outcome="/pages/listing/userList.xhtml" icon="pi pi-fw pi-user-plus">
+		            <f:param name="i" value="3"/>
+		        </p:menuitem>
 		    </p:tabMenu>
+		    <div class="logout">
+				<h:outputText value="Bem Vindo(a) #{usuarioBEAN.usuario.nome} ! " />
+				<p:commandButton value=" Sair" action="#{usuarioBEAN.logout}" />
+			</div>
 		</div>
 			<h:form id="form">
 			
