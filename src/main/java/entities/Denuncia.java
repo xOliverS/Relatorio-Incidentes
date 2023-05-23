@@ -70,6 +70,8 @@ public class Denuncia {
 	public void setEscolaridade(Integer escolaridade) {
 		this.escolaridade = escolaridade;
 	}
+	
+	
 	public Date getData() {
 		return data;
 	}

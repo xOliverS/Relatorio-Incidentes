@@ -36,6 +36,11 @@ public class UsuarioBEAN {
 		}
 		return null;
 	}
+	
+	public String logout() {
+		System.out.println("oi");
+		return "../index.xhtml?faces-redirect=true";
+	}
 
 	public String getLogin() {
 		return login;

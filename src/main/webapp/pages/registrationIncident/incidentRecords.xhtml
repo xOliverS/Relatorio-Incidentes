@@ -23,6 +23,9 @@
 		        <p:menuitem value="Registro de Incidente" outcome="incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
 		            <f:param name="i" value="1"/>
 		        </p:menuitem>
+		        <p:menuitem value="Cadastro de Usuario" outcome="/pages/userRegistration/userRegistration.xhtml" icon="pi pi-fw pi-user-plus">
+		            <f:param name="i" value="2"/>
+		        </p:menuitem>
 		    </p:tabMenu>
 		</div>
 			<h:form id="form">
@@ -101,7 +104,7 @@
 	        					<p:inputText id="Outro" value="#{denunciaBEAN.d.orientSexAgressor}" rendered="#{denunciaBEAN.d.orientSexAgressor eq 'Outro'}"/>
 	        				</h:panelGroup>
 	        			
-	        				<p:outputLabel value="Escolaridade \n Ensino Fundamental"/>
+	        				<p:outputLabel value="Escolaridade / Ensino Fundamental"/>
 							<p:selectOneRadio id="escolaridade" value="#{denunciaBEAN.d.escolaridade}">
 	           					<f:selectItem itemLabel="1ª" itemValue="1"/>
 	           					<f:selectItem itemLabel="2ª" itemValue="2"/>
@@ -115,7 +118,7 @@
 	        				</p:selectOneRadio>
 	        				
 	        				<p:outputLabel value="Relato do Incidente"/>
-							<p:inputText value="#{denunciaBEAN.d.relatoIncidente}"/>
+							<p:inputTextarea value="#{denunciaBEAN.d.relatoIncidente}"/>
 						
 							<p:outputLabel value="Que tipo de violação de direito:"/>
 							<p:selectOneRadio id="violacao" value="#{denunciaBEAN.d.violacaoDireito}">
@@ -131,7 +134,7 @@
 	        				</p:selectOneRadio>
 	        			
 	        				<p:outputLabel value="Que providências foram tomadas?"/>
-							<p:inputText value="#{denunciaBEAN.d.providencias}"/>
+							<p:inputTextarea value="#{denunciaBEAN.d.providencias}"/>
 						
 							<p:commandButton action="#{denunciaBEAN.salvar}" value="Registrar" update="form"/>
 				</div>

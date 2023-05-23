@@ -23,22 +23,26 @@
 		        <p:menuitem value="Registro de Incidente" outcome="/pages/registrationIncident/incidentRecords.xhtml" icon="pi pi-fw pi-calendar-plus">
 		            <f:param name="i" value="1"/>
 		        </p:menuitem>
+		        <p:menuitem value="Cadastro de Usuario" outcome="/pages/userRegistration/userRegistration.xhtml" icon="pi pi-fw pi-user-plus">
+		            <f:param name="i" value="2"/>
+		        </p:menuitem>
 		    </p:tabMenu>
+		    <div class="logout">
+				<h:outputText value="Bem Vindo(a) #{usuarioBEAN.usuario.nome}! " />
+				<p:commandButton value=" Sair" action="#{usuarioBEAN.logout}" />
+			</div>
 		</div>
 		<h:form>
 			<p:dataTable value="#{denunciaBEAN.lista}" var="d" rowKey="#{d.id}"> 
 				<f:facet name="header">
 					<h2>Incidentes Retados</h2>
 				</f:facet>
-					<p:column headerText="Nome da Vítima"><p:outputLabel value="#{d.nome}" /></p:column>
+					<p:column headerText="Nome Vítima"><p:outputLabel value="#{d.nome}" /></p:column>
 					<p:column headerText="Sexo"><p:outputLabel value="#{d.sexo}" /></p:column>
 					<p:column headerText="Idade"><p:outputLabel value="#{d.idade}" /></p:column>
 					<p:column headerText="Serie/Turno"><p:outputLabel value="#{d.serieTurno}" /></p:column>
 					<p:column headerText="Endereço"><p:outputLabel value="#{d.endereco}" /></p:column>
-					
-					<p:column headerText="Nome Suposto Agressor"><p:outputLabel value="#{d.nomeAgressor}" /></p:column>
-					<p:column headerText="SexoAgressor"><p:outputLabel value="#{d.sexoAgressor}" /></p:column>
-					<p:column headerText="Idade Agressor"><p:outputLabel value="#{d.idadeAgressor}"/></p:column>
+					<p:column headerText="Data Registro"><p:outputLabel value="#{d.data}" /></p:column>
 					<p:column headerText="Deletar">
 			        	<p:commandButton icon="pi pi-trash" action="#{denunciaBEAN.deletar}" ajax="false">
 			            	<f:setPropertyActionListener value="#{d}" target="#{denunciaBEAN.d}" />
@@ -46,23 +50,48 @@
             		</p:column>
             		<p:column headerText="Visualizar">
             			<p:commandButton icon="pi pi-external-link" onclick="PF('dlg2').show()"/>
-						<p:dialog header="Dados" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade">
+						<p:dialog header="Dados do Agressor" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade">
 							
 		    				<p:outputLabel value="Agressor: "/>
 		    				<p:outputLabel value="#{d.nomeAgressor}"/>
 		    				<p/>
-		    				<p:outputLabel value="Sexo "/>
+		    				<p:outputLabel value="Sexo: "/>
 		    				<p:outputLabel value="#{d.sexo}" />
 		    				<p/>
-		    				<p:outputLabel value="Idade "/>
+		    				<p:outputLabel value="Idade: "/>
 		    				<p:outputLabel value="#{d.idade}" />
+		    				<p/>
+		    				<p:outputLabel value="Grau Parentesco / relacionamento com vitima: "/>
+		    				<p:outputLabel value="#{d.grauParentesco}" />
+		    				<p/>
+		    				<p:outputLabel value="Ocupação: "/>
+		    				<p:outputLabel value="#{d.ocupacao}" />
+		    				<p/>
+		    				<p:outputLabel value="Raça / Cor: "/>
+		    				<p:outputLabel value="#{d.racaCorAgressor}" />
+		    				<p/>
+		    				<p:outputLabel value="Identidade de gênero: "/>
+		    				<p:outputLabel value="#{d.identGeneroAgressor}" />
+		    				<p/>
+		    				<p:outputLabel value="Orientação Sexual "/>
+		    				<p:outputLabel value="#{d.orientSexAgressor}" />
+		    				<p/>
+		    				<p:outputLabel value="Escolaridade / Ensino Fundamental: "/>
+		    				<p:outputLabel value="#{d.escolaridade}" />
+		    				<p/>
+		    				<p:outputLabel value="Relato do Incidente: "/>
+		    				<p:outputLabel value="#{d.relatoIncidente}" />
+		    				<p/>
+		    				<p:outputLabel value="Tipo de violação de direito: "/>
+		    				<p:outputLabel value="#{d.violacaoDireito}" />
+		    				<p/>
+		    				<p:outputLabel value="Providências tomadas: "/>
+		    				<p:outputLabel value="#{d.providencias}" />
+		    				
 						</p:dialog>
-						</p:column>
+					</p:column>
 
 			</p:dataTable>
-			<p:dialog header="Contagem" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade">
-	    		<p:outputLabel value="#{emailBean.contador}"/>
-			</p:dialog>
 		</h:form>
 	</h:body>
 </html>
