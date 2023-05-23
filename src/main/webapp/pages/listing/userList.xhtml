@@ -36,6 +36,9 @@
 			</div>
 		</div>
 		<h:form>
+			<p:messages id="messages" showDetail="true" closable="true">
+		    	<p:autoUpdate />
+		    </p:messages>
 			<p:dataTable value="#{usuarioBEAN.lista}" var="u" rowKey="#{u.id}"> 
 				<f:facet name="header">
 					<h2>Listagem de Usuario</h2>

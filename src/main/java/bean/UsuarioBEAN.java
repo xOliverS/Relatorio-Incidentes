@@ -35,6 +35,7 @@ public class UsuarioBEAN {
 	
 	public String deletar() {
 		UsuarioDAO.deletar(usuario);
+		sucesso("Sucesso", "Usuário deletado com sucesso !");
 		lista = UsuarioDAO.listarTodos();
 		return null;
 	}
