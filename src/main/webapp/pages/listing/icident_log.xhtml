@@ -36,6 +36,10 @@
 			</div>
 		</div>
 		<h:form>
+		
+			<p:messages id="messages" showDetail="true" closable="true">
+		    	<p:autoUpdate />
+		    </p:messages>
 			<p:dataTable value="#{denunciaBEAN.lista}" var="d" rowKey="#{d.id}"> 
 				<f:facet name="header">
 					<h2>Incidentes Retados</h2>

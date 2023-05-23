@@ -18,7 +18,7 @@ public class DenunciaBEAN {
 		
 		try {
 			DenunciaDAO.salvar(denuncia);
-			sucesso("Sucesso", "Email Salvo com sucesso");
+			sucesso("Sucesso", "Denuncia salva com sucesso");
 			denuncia = new Denuncia();
 		} catch (Exception e) {
 			erro("Erro", "Erro ao salvar" + e);
@@ -28,6 +28,7 @@ public class DenunciaBEAN {
 	
 	public String deletar() {
 		DenunciaDAO.deletar(denuncia);
+		sucesso("Sucesso", "Denuncia deletada ");
 		lista = DenunciaDAO.listarTodos();
 		return null;
 	}
